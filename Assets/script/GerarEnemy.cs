@@ -12,14 +12,14 @@ public class GerarEnemy : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Time.time - tempo > 2.0f)
+		if (Time.time - tempo > 5.0f)
 		{
 			GameObject enemy = Instantiate (prefab) as GameObject;
-			float x = Random.Range (-12, 12);
-			float z = Random.Range (-12, 12);
+			float x = Random.Range (0, 50);
+			float z = Random.Range (0, 50);
 			//int i = Random.Range(0, 6);
 
-			enemy.transform.position = new Vector3(x, 1.0f, z);
+			enemy.transform.position = new Vector3(x, 0.05f, z);
 
 			tempo = Time.time;
 		}

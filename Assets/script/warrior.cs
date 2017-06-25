@@ -18,12 +18,10 @@ public class warrior : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
-			this.gameObject.GetComponent<Animation> ().Play ("Walk");
-
+			this.gameObject.GetComponent<Animation> ().Play ("idle");
 			this.gameObject.transform.Rotate (new Vector3 (0.0f, -90.0f, 0.0f));
 		} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
-			this.gameObject.GetComponent<Animation> ().Play ("Walk");
-
+			this.gameObject.GetComponent<Animation> ().Play ("idle");
 			this.gameObject.transform.Rotate (new Vector3 (0.0f, 90.0f, 0.0f));
 		} else if (Input.GetKeyDown (KeyCode.UpArrow)) {
 			this.gameObject.GetComponent<Animation> ().Play ("Walk");
@@ -36,10 +34,10 @@ public class warrior : MonoBehaviour {
 		} else if (Input.GetKeyDown (KeyCode.Alpha1)) { //Habilidade 1
 			this.gameObject.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (Fireball) as GameObject;
-			fb.transform.position = this.gameObject.transform.position + (this.gameObject.transform.forward);
+			fb.transform.position = this.gameObject.transform.position + (this.gameObject.transform.forward) * 2;
 			fb.gameObject.transform.Translate (new Vector3 (-0.5f, 1.0f, 0.0f));
 			fb.transform.rotation = this.gameObject.transform.rotation;
-			fb.GetComponent<Rigidbody> ().AddForce (Fireball.transform.forward * 500.0f);
+			//fb.GetComponent<Rigidbody> ().AddForce (Fireball.transform.forward * 500.0f);
 			/*if(fb.gameObject.transform.position.x >= this.gameObject.transform.position.x + (4.0f * 1.25f) || 
 				fb.gameObject.transform.position.z >= this.gameObject.transform.position.z + (4.0f * 1.25f)){
 				Debug.Log ("ENTROU");
@@ -58,8 +56,6 @@ public class warrior : MonoBehaviour {
 			fb.gameObject.transform.Translate (new Vector3 (-1.25f, 0.05f, 2.0f));
 			fb.transform.rotation = this.gameObject.transform.rotation;
 		}
-
-
 
 		//Comando para limitar o plano (Não sair do plano)
 		Vector3 pos = this.gameObject.transform.position;
