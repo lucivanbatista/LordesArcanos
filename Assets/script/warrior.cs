@@ -59,6 +59,6 @@ public class warrior : MonoBehaviour {
 
 		//Comando para limitar o plano (Não sair do plano)
 		Vector3 pos = this.gameObject.transform.position;
-		this.gameObject.transform.position = new Vector3(Mathf.Clamp(pos.x, 1.25f , 48.75f), pos.y, Mathf.Clamp(pos.z, 1.25f, 48.75f));
+		this.gameObject.transform.position = new Vector3 (Mathf.Clamp (pos.x, 1.25f, 48.75f), pos.y, Mathf.Clamp (pos.z, 1.25f, 48.75f));
 	}
 }
