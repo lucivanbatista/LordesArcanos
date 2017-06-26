@@ -12,7 +12,7 @@ public class ScriptBoladeFogo : MonoBehaviour {
 	void Update () {
 		this.gameObject.transform.Translate(this.gameObject.transform.up * 0.01f);
 
-		if(this.gameObject.transform.position.y > 6.0f){
+		if(this.gameObject.transform.position.y > 1.15f){
 			Destroy (this.gameObject);
 		}
 	}

@@ -20,7 +20,7 @@ public class MovimentoZombie : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "power")
 		{
-			Destroy(this.gameObject);
+			Destroy(gameObject);
 		}
 		if (col.gameObject.tag == "Player")
 		{
