@@ -11,9 +11,12 @@ public class Objetos : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
 	}
-
+	void OnTriggerEnter(Collider other){
+		if (other.gameObject.tag == "Trap") {
+			other.gameObject.GetComponent<Animation>().Play ("Up Down");
+		}
+	}
 	void OnCollisionEnter(Collision col)
 	{
 		Debug.Log ("Colisão");
