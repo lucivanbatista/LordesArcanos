@@ -9,17 +9,22 @@ public class LifePotionScript : MonoBehaviour
 	{
 	
 	}
-	void OnTriggerEnter(Collider other){
-		if (other.gameObject.tag == "Life") {
-			Destroy (other.gameObject);
-		}
-		if (other.gameObject.tag == "Mana") {
-			Destroy (other.gameObject);
-		}
-	}
+	
 	// Update is called once per frame
 	void Update (){
 
 	}
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Life")
+        {
+            Destroy(col.gameObject);
+        }
+        if (col.gameObject.tag == "Mana")
+        {
+            Destroy(col.gameObject);
+        }
+    }
 }
 

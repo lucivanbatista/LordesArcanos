@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class ScriptBoladeFogo : MonoBehaviour {
 
+    Vector3 posicaoInicial;
 
 	void Start () {
-		
+        posicaoInicial = this.gameObject.transform.position;
 	}
 
 	void Update () {
-		this.gameObject.transform.Translate(this.gameObject.transform.up * 0.01f);
+        //Debug.Log(this.gameObject.transform.position);
+		/*this.gameObject.transform.Translate(this.gameObject.transform.up * 0.01f);
 
 		if(this.gameObject.transform.position.y > 1.15f){
 			Destroy (this.gameObject);
-		}
+		}*/
 	}
 
 	void OnCollisionEnter(Collision col)
