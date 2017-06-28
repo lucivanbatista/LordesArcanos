@@ -17,13 +17,9 @@ public class LifePotionScript : MonoBehaviour
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Life")
+        if (col.gameObject.tag == "Player")
         {
-            Destroy(col.gameObject);
-        }
-        if (col.gameObject.tag == "Mana")
-        {
-            Destroy(col.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }

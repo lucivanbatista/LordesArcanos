@@ -44,7 +44,7 @@ namespace DigitalRuby.PyroParticles
         public float TimeToImpact = 1.0f;
 
         [SingleLine("How many meteors should be emitted per second (min and max)")]
-        public RangeOfIntegers MeteorsPerSecondRange = new RangeOfIntegers { Minimum = 5, Maximum = 10 };
+        public RangeOfIntegers MeteorsPerSecondRange = new RangeOfIntegers { Minimum = 1, Maximum = 2 };
 
         [SingleLine("Scale multiplier for meteors (min and max)")]
         public RangeOfFloats ScaleRange = new RangeOfFloats { Minimum = 0.25f, Maximum = 1.5f };
@@ -87,9 +87,9 @@ namespace DigitalRuby.PyroParticles
             Vector3 vel = dir / TimeToImpact;
             Rigidbody r = meteor.GetComponent<Rigidbody>();
             r.velocity = vel;
-            float xRot = UnityEngine.Random.Range(-90.0f, 90.0f);
-            float yRot = UnityEngine.Random.Range(-90.0f, 90.0f);
-            float zRot = UnityEngine.Random.Range(-90.0f, 90.0f);
+            float xRot = UnityEngine.Random.Range(0.0f, 20.0f);
+            float yRot = UnityEngine.Random.Range(0.0f, 20.0f);
+            float zRot = UnityEngine.Random.Range(0.0f, 20.0f);
             r.angularVelocity = new Vector3(xRot, yRot, zRot);
             r.mass *= (scale * scale);
 

@@ -9,7 +9,7 @@ public class warrior : MonoBehaviour {
 	public GameObject MeteorSwarm;
 	int passos = 0;
 	int limitePassos;
-	int mana = 50;
+	int mana = 500;
 	int vida = 60;
 
     void Start () {
@@ -67,9 +67,23 @@ public class warrior : MonoBehaviour {
             Debug.Log("Mana Atual: " + mana);
         }
         
-
 		//Comando para limitar o plano (Não sair do plano)
 		Vector3 pos = this.gameObject.transform.position;
 		this.gameObject.transform.position = new Vector3 (Mathf.Clamp (pos.x, 1.25f, 48.75f), pos.y, Mathf.Clamp (pos.z, 1.25f, 48.75f));
 	}
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Life")
+        {
+            vida += 20;
+            Destroy(col.gameObject);
+        }
+
+        if (col.gameObject.tag == "Mana")
+        {
+            mana += 20;
+            Destroy(col.gameObject);
+        }
+    }
 }
