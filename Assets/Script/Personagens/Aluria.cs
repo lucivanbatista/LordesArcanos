@@ -56,10 +56,20 @@ public class Aluria : MonoBehaviour {
             Debug.Log("Mana Atual: " + mana);
         } else if (Input.GetKeyDown(KeyCode.L) && mana >= 35) { //Habilidade 3
             aluria.GetComponent<Animation> ().Play ("Attack");
-			GameObject fb = Instantiate (H3) as GameObject;
-			fb.transform.position = aluria.transform.position + (aluria.transform.forward);
-			fb.gameObject.transform.Translate (new Vector3 (-1.25f, 0.05f, 2.0f));
-			fb.transform.rotation = aluria.transform.rotation;
+			GameObject fba = Instantiate (H3) as GameObject;
+			GameObject fbb = Instantiate (H3) as GameObject;
+			GameObject fbc = Instantiate (H3) as GameObject;
+			fba.transform.position = aluria.transform.position + (aluria.transform.forward);
+			fba.gameObject.transform.Translate (new Vector3 (-1.25f, 0.05f, 2.0f));
+			fba.transform.rotation = aluria.transform.rotation;
+
+			fbb.transform.position = aluria.transform.position + (aluria.transform.forward);
+			fbb.gameObject.transform.Translate (new Vector3 (-1.25f, 0.05f, 0.0f));
+			fbb.transform.rotation = aluria.transform.rotation;
+
+			fbc.transform.position = aluria.transform.position + (aluria.transform.forward);
+			fbc.gameObject.transform.Translate (new Vector3 (-1.25f, 0.05f, -2.0f));
+			fbc.transform.rotation = aluria.transform.rotation;
             mana -= 35;
             Debug.Log("Mana Atual: " + mana);
         }
