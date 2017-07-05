@@ -48,18 +48,39 @@ public class Lilith : MonoBehaviour {
             Debug.Log("Mana Atual: " + mana);
         } else if (Input.GetKeyDown(KeyCode.O) && mana >= 15) { //Habilidade 2
             lilith.GetComponent<Animation> ().Play ("Attack");
-			GameObject fb = Instantiate (H2) as GameObject;
-			fb.transform.position = lilith.transform.position + (lilith.transform.forward);
-			fb.gameObject.transform.Translate (new Vector3 (-1.25f, 0.05f, 2.0f));
-			fb.transform.rotation = lilith.transform.rotation;
+            lilith.GetComponent<Animation>().Play("Attack");
+            GameObject fba = Instantiate(H2) as GameObject;
+            GameObject fbb = Instantiate(H2) as GameObject;
+            GameObject fbc = Instantiate(H2) as GameObject;
+            GameObject fbd = Instantiate(H2) as GameObject;
+            GameObject fbe = Instantiate(H2) as GameObject;
+            fba.transform.position = lilith.transform.position + (lilith.transform.forward);
+            fba.gameObject.transform.Translate(new Vector3(-1.25f, 0.05f, 2.0f));
+            fba.transform.rotation = lilith.transform.rotation;
+
+            fbb.transform.position = lilith.transform.position + (lilith.transform.forward);
+            fbb.gameObject.transform.Translate(new Vector3(-1.25f, 0.05f, 4.0f));
+            fbb.transform.rotation = lilith.transform.rotation;
+
+            fbc.transform.position = lilith.transform.position + (lilith.transform.forward);
+            fbc.gameObject.transform.Translate(new Vector3(-1.25f, 0.05f, 0.0f));
+            fbc.transform.rotation = lilith.transform.rotation;
+
+            fbd.transform.position = lilith.transform.position + (lilith.transform.forward);
+            fbd.gameObject.transform.Translate(new Vector3(-1.25f, 0.05f, -2.0f));
+            fbd.transform.rotation = lilith.transform.rotation;
+
+            fbe.transform.position = lilith.transform.position + (lilith.transform.forward);
+            fbe.gameObject.transform.Translate(new Vector3(-1.25f, 0.05f, -4.0f));
+            fbe.transform.rotation = lilith.transform.rotation;
             mana -= 15;
             Debug.Log("Mana Atual: " + mana);
         } else if (Input.GetKeyDown(KeyCode.P) && mana >= 30) { //Habilidade 3
             lilith.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (H3) as GameObject;
 			fb.transform.position = lilith.transform.position + (lilith.transform.forward);
-			fb.gameObject.transform.Translate (new Vector3 (-1.25f, 0.05f, 2.0f));
-			fb.transform.rotation = lilith.transform.rotation;
+            fb.gameObject.transform.Translate(new Vector3(-5.0f, 0.05f, 0.0f));
+            fb.transform.rotation = lilith.transform.rotation;
             mana -= 30;
             Debug.Log("Mana Atual: " + mana);
         }
