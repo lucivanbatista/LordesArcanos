@@ -20,23 +20,23 @@ public class Dano : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col)
 	{
-		if(col.gameObject.tag == "Class 0"){
+		if(col.gameObject.tag == "Class 1"){
 			vida -= 5;
 			Debug.Log(this.gameObject.tag + "Vida Collider: " + vida);
 		}
-		if(col.gameObject.tag == "Class 1"){
+		if(col.gameObject.tag == "Class 2"){
 			vida -= 10;
 			Debug.Log(this.gameObject.tag + "Vida Collider: " + vida);
 		}
-		if(col.gameObject.tag == "Class 2"){
+		if(col.gameObject.tag == "Class 3"){
 			vida -= 15;
 			Debug.Log(this.gameObject.tag + "Vida Collider: " + vida);
 		}
-		if(col.gameObject.tag == "Class 3"){
+		if(col.gameObject.tag == "Class 4"){
 			vida -= 20;
 			Debug.Log(this.gameObject.tag + "Vida Collider: " + vida);
 		}
-		if(col.gameObject.tag == "Class 4"){
+		if(col.gameObject.tag == "Class 5"){
 			vida -= 40;
 			Debug.Log(this.gameObject.tag + "Vida Collider: " + vida);
 		}

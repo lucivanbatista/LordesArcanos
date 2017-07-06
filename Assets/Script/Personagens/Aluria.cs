@@ -40,8 +40,8 @@ public class Aluria : MonoBehaviour {
         } else if (Input.GetKeyDown(KeyCode.J) && mana >= 10) { //Habilidade 1
             aluria.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (H1) as GameObject;
-			fb.transform.position = aluria.transform.position + (aluria.transform.forward);
-			fb.gameObject.transform.Translate (new Vector3 (0.0f, 0.0f, 0.0f));
+			fb.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
+			fb.transform.position = (new Vector3(fb.transform.position.x, 1.0f, fb.transform.position.z));
 			fb.transform.rotation = aluria.transform.rotation;
             //fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
             mana -= 10;

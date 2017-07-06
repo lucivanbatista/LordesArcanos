@@ -21,9 +21,9 @@ public class Objetos : MonoBehaviour {
 	{
 		Debug.Log ("Colisão");
 
-		/*if(col.gameObject.tag == "power")
+		if(col.gameObject.tag == "Class 1" || col.gameObject.tag == "Class 2" || col.gameObject.tag == "Class 3" || col.gameObject.tag == "Class 4" || col.gameObject.tag == "Class 5")
 		{
-			Destroy(this.gameObject);
-		}*/
+			Destroy(col.gameObject);
+		}
 	}
 }

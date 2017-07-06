@@ -10,16 +10,16 @@ public class Kane : MonoBehaviour {
 	int passos = 0;
 	int limitePassos;
 	int mana = 500;
-	Vector3 pos_atual;
+	
 
     void Start () {
 		limitePassos = 4;
-		pos_atual = this.gameObject.transform.position;
+		
 	}
 
 	void Update () {
 		GameObject kane = this.gameObject;
-		pos_atual = kane.transform.position;
+		
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             kane.GetComponent<Animation>().Play("idle");
@@ -83,8 +83,6 @@ public class Kane : MonoBehaviour {
 
     }
 
-	void OnCollisionEnter(Collision col){
-		this.gameObject.transform.position = pos_atual;
-	}
+	
     
 }
