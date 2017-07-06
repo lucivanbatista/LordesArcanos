@@ -23,6 +23,7 @@ public class Dano : MonoBehaviour {
 		if(col.gameObject.tag == "Class 1"){
 			vida -= 5;
 			Debug.Log(this.gameObject.tag + "Vida Collider: " + vida);
+            Destroy(col.gameObject);
 		}
 		if(col.gameObject.tag == "Class 2"){
 			vida -= 10;

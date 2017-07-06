@@ -10,7 +10,8 @@ public class Kane : MonoBehaviour {
 	int passos = 0;
 	int limitePassos;
 	int mana = 500;
-	
+    int vida = 60;
+
 
     void Start () {
 		limitePassos = 4;
@@ -77,12 +78,21 @@ public class Kane : MonoBehaviour {
             Debug.Log("Mana Atual: " + mana);
         }
 
-        //Comando para limitar o plano (Não sair do plano)
-        Vector3 pos = kane.transform.position;
-        kane.transform.position = new Vector3(Mathf.Clamp(pos.x, 1.25f, 48.75f), pos.y, Mathf.Clamp(pos.z, 1.25f, 48.75f));
-
+       
     }
 
-	
-    
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "Life")
+        {
+            vida += 20;
+            Destroy(col.gameObject);
+        }
+
+        if (col.gameObject.tag == "Mana")
+        {
+            mana += 20;
+            Destroy(col.gameObject);
+        }
+    }
 }

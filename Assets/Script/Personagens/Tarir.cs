@@ -39,10 +39,52 @@ public class Tarir : MonoBehaviour {
             Debug.Log("Mana Atual: " + mana);
         } else if (Input.GetKeyDown(KeyCode.Alpha8) && mana >= 10) { //Habilidade 1
             tarir.GetComponent<Animation> ().Play ("Attack");
-			GameObject fb = Instantiate (H1) as GameObject;
-			fb.transform.position = tarir.transform.position + (tarir.transform.forward);
-			fb.gameObject.transform.Translate (new Vector3 (0.0f, 0.0f, 0.0f));
-			fb.transform.rotation = tarir.transform.rotation;
+			GameObject fba = Instantiate (H1) as GameObject;
+            GameObject fbb = Instantiate(H1) as GameObject;
+            GameObject fbc = Instantiate(H1) as GameObject;
+            GameObject fbd = Instantiate(H1) as GameObject;
+            GameObject fbe = Instantiate(H1) as GameObject;
+            GameObject fbf = Instantiate(H1) as GameObject;
+            GameObject fbg = Instantiate(H1) as GameObject;
+            GameObject fbh = Instantiate(H1) as GameObject;
+            GameObject fbi = Instantiate(H1) as GameObject;
+
+            fba.transform.position = tarir.transform.position + (tarir.transform.forward) * 2;
+            fba.transform.rotation = tarir.transform.rotation;
+            fba.gameObject.transform.Translate(new Vector3(2.5f, 0.05f, 2.5f));
+
+            fbb.transform.position = tarir.transform.position + (tarir.transform.forward) * 2;
+            fbb.transform.rotation = tarir.transform.rotation;
+            fbb.gameObject.transform.Translate(new Vector3(0.0f, 0.05f, 2.5f));
+
+            fbc.transform.position = tarir.transform.position + (tarir.transform.forward) * 2;
+            fbc.transform.rotation = tarir.transform.rotation;
+            fbc.gameObject.transform.Translate(new Vector3(-2.5f, 0.05f, 2.5f));
+
+            fbd.transform.position = tarir.transform.position + (tarir.transform.forward) * 2;
+            fbd.transform.rotation = tarir.transform.rotation;
+            fbd.gameObject.transform.Translate(new Vector3(2.5f, 0.05f, 5.0f));
+
+            fbe.transform.position = tarir.transform.position + (tarir.transform.forward) * 2;
+            fbe.transform.rotation = tarir.transform.rotation;
+            fbe.gameObject.transform.Translate(new Vector3(0.0f, 0.05f, 5.0f));
+
+            fbf.transform.position = tarir.transform.position + (tarir.transform.forward) * 2;
+            fbf.transform.rotation = tarir.transform.rotation;
+            fbf.gameObject.transform.Translate(new Vector3(-2.5f, 0.05f, 5.0f));
+
+            fbg.transform.position = tarir.transform.position + (tarir.transform.forward) * 2;
+            fbg.transform.rotation = tarir.transform.rotation;
+            fbg.gameObject.transform.Translate(new Vector3(2.5f, 0.05f, 7.5f));
+
+            fbh.transform.position = tarir.transform.position + (tarir.transform.forward) * 2;
+            fbh.transform.rotation = tarir.transform.rotation;
+            fbh.gameObject.transform.Translate(new Vector3(0.0f, 0.05f, 7.5f));
+
+            fbi.transform.position = tarir.transform.position + (tarir.transform.forward) * 2;
+            fbi.transform.rotation = tarir.transform.rotation;
+            fbi.gameObject.transform.Translate(new Vector3(-2.5f, 0.05f, 7.5f));
+
             //fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
             mana -= 10;
             Debug.Log("Mana Atual: " + mana);
@@ -59,10 +101,6 @@ public class Tarir : MonoBehaviour {
             mana -= 20;
             Debug.Log("Mana Atual: " + mana);
         }
-        
-		//Comando para limitar o plano (Não sair do plano)
-		Vector3 pos = tarir.transform.position;
-        tarir.transform.position = new Vector3 (Mathf.Clamp (pos.x, 1.25f, 48.75f), pos.y, Mathf.Clamp (pos.z, 1.25f, 48.75f));
 	}
 
     void OnTriggerEnter(Collider col)

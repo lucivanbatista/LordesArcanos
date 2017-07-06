@@ -41,8 +41,9 @@ public class Lilith : MonoBehaviour {
             lilith.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (H1) as GameObject;
 			fb.transform.position = lilith.transform.position + (lilith.transform.forward) * 2;
-			fb.gameObject.transform.Translate (new Vector3 (-0.5f, 1.0f, 0.0f));
             fb.transform.rotation = lilith.transform.rotation;
+            fb.gameObject.transform.Translate (new Vector3 (-0.5f, 1.0f, 0.0f));
+            
             //fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
             mana -= 15;
             Debug.Log("Mana Atual: " + mana);
@@ -55,39 +56,37 @@ public class Lilith : MonoBehaviour {
             GameObject fbd = Instantiate(H2) as GameObject;
             GameObject fbe = Instantiate(H2) as GameObject;
             fba.transform.position = lilith.transform.position + (lilith.transform.forward);
-            fba.gameObject.transform.Translate(new Vector3(-1.25f, 0.05f, 2.0f));
             fba.transform.rotation = lilith.transform.rotation;
+            fba.gameObject.transform.Translate(new Vector3(-1.25f, 0.05f, 0.0f));
 
             fbb.transform.position = lilith.transform.position + (lilith.transform.forward);
-            fbb.gameObject.transform.Translate(new Vector3(-1.25f, 0.05f, 4.0f));
             fbb.transform.rotation = lilith.transform.rotation;
-
+            fbb.gameObject.transform.Translate(new Vector3(-2.5f, 0.05f, 0.0f));
+            
             fbc.transform.position = lilith.transform.position + (lilith.transform.forward);
-            fbc.gameObject.transform.Translate(new Vector3(-1.25f, 0.05f, 0.0f));
             fbc.transform.rotation = lilith.transform.rotation;
-
+            fbc.gameObject.transform.Translate(new Vector3(1.25f, 0.05f, 0.0f));
+            
             fbd.transform.position = lilith.transform.position + (lilith.transform.forward);
-            fbd.gameObject.transform.Translate(new Vector3(-1.25f, 0.05f, -2.0f));
             fbd.transform.rotation = lilith.transform.rotation;
-
+            fbd.gameObject.transform.Translate(new Vector3(0.0f, 0.05f, 0.0f));
+            
             fbe.transform.position = lilith.transform.position + (lilith.transform.forward);
-            fbe.gameObject.transform.Translate(new Vector3(-1.25f, 0.05f, -4.0f));
             fbe.transform.rotation = lilith.transform.rotation;
+            fbe.gameObject.transform.Translate(new Vector3(2.5f, 0.05f, 0.0f));
+           
             mana -= 15;
             Debug.Log("Mana Atual: " + mana);
         } else if (Input.GetKeyDown(KeyCode.P) && mana >= 30) { //Habilidade 3
             lilith.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (H3) as GameObject;
 			fb.transform.position = lilith.transform.position + (lilith.transform.forward);
-            fb.gameObject.transform.Translate(new Vector3(-5.0f, 0.05f, 0.0f));
             fb.transform.rotation = lilith.transform.rotation;
+            fb.gameObject.transform.Translate(new Vector3(0.0f, 0.05f, 5.0f));
+            
             mana -= 30;
             Debug.Log("Mana Atual: " + mana);
         }
-        
-		//Comando para limitar o plano (Não sair do plano)
-		Vector3 pos = lilith.transform.position;
-        lilith.transform.position = new Vector3 (Mathf.Clamp (pos.x, 1.25f, 48.75f), pos.y, Mathf.Clamp (pos.z, 1.25f, 48.75f));
 	}
 
     void OnTriggerEnter(Collider col)

@@ -59,24 +59,21 @@ public class Aluria : MonoBehaviour {
 			GameObject fba = Instantiate (H3) as GameObject;
 			GameObject fbb = Instantiate (H3) as GameObject;
 			GameObject fbc = Instantiate (H3) as GameObject;
-			fba.transform.position = aluria.transform.position + (aluria.transform.forward);
-			fba.gameObject.transform.Translate (new Vector3 (-1.25f, 0.05f, 2.0f));
-			fba.transform.rotation = aluria.transform.rotation;
+            fba.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
+            fba.transform.rotation = aluria.transform.rotation;
+            fba.gameObject.transform.Translate(new Vector3(-1.25f, 0.05f, 0.0f));
 
-			fbb.transform.position = aluria.transform.position + (aluria.transform.forward);
-			fbb.gameObject.transform.Translate (new Vector3 (-1.25f, 0.05f, 0.0f));
-			fbb.transform.rotation = aluria.transform.rotation;
+            fbb.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
+            fbb.transform.rotation = aluria.transform.rotation;
+            fbb.gameObject.transform.Translate(new Vector3(1.25f, 0.05f, 0.0f));
 
-			fbc.transform.position = aluria.transform.position + (aluria.transform.forward);
-			fbc.gameObject.transform.Translate (new Vector3 (-1.25f, 0.05f, -2.0f));
-			fbc.transform.rotation = aluria.transform.rotation;
+            fbc.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
+            fbc.transform.rotation = aluria.transform.rotation;
+            fbc.gameObject.transform.Translate(new Vector3(0.0f, 0.05f, 0.0f));
+
             mana -= 35;
             Debug.Log("Mana Atual: " + mana);
         }
-        
-		//Comando para limitar o plano (Não sair do plano)
-		Vector3 pos = aluria.transform.position;
-        aluria.transform.position = new Vector3 (Mathf.Clamp (pos.x, 1.25f, 48.75f), pos.y, Mathf.Clamp (pos.z, 1.25f, 48.75f));
 	}
 
     void OnTriggerEnter(Collider col)
