@@ -1,6 +1,8 @@
-﻿    using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class Aluria : MonoBehaviour {
 
@@ -11,6 +13,7 @@ public class Aluria : MonoBehaviour {
 	int limitePassos;
 	int mana = 500;
 	int vida = 60;
+	public Slider manaSlider;
 
     void Start () {
 		limitePassos = 4;	
@@ -22,11 +25,9 @@ public class Aluria : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.A)) {
             aluria.GetComponent<Animation>().Play("idle");
             aluria.transform.Rotate(new Vector3(0.0f, -90.0f, 0.0f));
-            Debug.Log("Mana Atual: " + mana);
         } else if (Input.GetKeyDown(KeyCode.D)) {
             aluria.GetComponent<Animation> ().Play ("idle");
             aluria.transform.Rotate (new Vector3 (0.0f, 90.0f, 0.0f));
-            Debug.Log("Mana Atual: " + mana);
         } else if (Input.GetKeyDown(KeyCode.W)) {
             aluria.GetComponent<Animation> ().Play ("Walk");
             aluria.transform.Translate (new Vector3 (0.0f, 0.0f, 2.5f));
@@ -36,7 +37,6 @@ public class Aluria : MonoBehaviour {
             aluria.GetComponent<Animation> ().Play ("Walk");
             aluria.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
 			passos++;
-            Debug.Log("Mana Atual: " + mana);
         } else if (Input.GetKeyDown(KeyCode.J) && mana >= 10) { //Habilidade 1
             aluria.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (H1) as GameObject;
@@ -45,7 +45,7 @@ public class Aluria : MonoBehaviour {
             fb.transform.rotation = aluria.transform.rotation;
             fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
             mana -= 10;
-            Debug.Log("Mana Atual: " + mana);
+			manaSlider.value = mana;
         } else if (Input.GetKeyDown(KeyCode.K) && mana >= 15) { //Habilidade 2
             aluria.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (H2) as GameObject;
@@ -53,7 +53,7 @@ public class Aluria : MonoBehaviour {
 			fb.gameObject.transform.Translate (new Vector3 (0.0f, 0.0f, 0.5f));
 			fb.transform.rotation = aluria.transform.rotation;
             mana -= 15;
-            Debug.Log("Mana Atual: " + mana);
+			manaSlider.value = mana;
         } else if (Input.GetKeyDown(KeyCode.L) && mana >= 35) { //Habilidade 3
             aluria.GetComponent<Animation> ().Play ("Attack");
 			GameObject fba = Instantiate (H3) as GameObject;
@@ -72,22 +72,17 @@ public class Aluria : MonoBehaviour {
             fbc.gameObject.transform.Translate(new Vector3(0.0f, 0.05f, 0.0f));
 
             mana -= 35;
-            Debug.Log("Mana Atual: " + mana);
+			manaSlider.value = mana;
         }
         //n.transform.position = (new Vector3(n.transform.position.x + 0.5f , 1.0f, n.transform.position.z + 0.5f));
     }
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Life")
-        {
-            vida += 20;
-            Destroy(col.gameObject);
-        }
-
         if (col.gameObject.tag == "Mana")
         {
             mana += 20;
+			manaSlider.value = mana;
             Destroy(col.gameObject);
         }
     }

@@ -1,6 +1,8 @@
-﻿    using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class Tarir : MonoBehaviour {
 
@@ -11,6 +13,7 @@ public class Tarir : MonoBehaviour {
 	int limitePassos;
 	int mana = 500;
 	int vida = 60;
+	public Slider manaSlider;
 
     void Start () {
 		limitePassos = 4;	
@@ -22,21 +25,20 @@ public class Tarir : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Y)) {
             tarir.GetComponent<Animation>().Play("idle");
             tarir.transform.Rotate(new Vector3(0.0f, -90.0f, 0.0f));
-            Debug.Log("Mana Atual: " + mana);
-        } else if (Input.GetKeyDown(KeyCode.I)) {
+        } 
+		else if (Input.GetKeyDown(KeyCode.I)) {
             tarir.GetComponent<Animation> ().Play ("idle");
             tarir.transform.Rotate (new Vector3 (0.0f, 90.0f, 0.0f));
-            Debug.Log("Mana Atual: " + mana);
-        } else if (Input.GetKeyDown(KeyCode.Alpha7)) {
+        } 
+		else if (Input.GetKeyDown(KeyCode.Alpha7)) {
             tarir.GetComponent<Animation> ().Play ("Walk");
             tarir.transform.Translate (new Vector3 (0.0f, 0.0f, 2.5f));
 			passos++;
-            Debug.Log("Mana Atual: " + mana);
-        } else if (Input.GetKeyDown(KeyCode.U)) {
+        } 
+		else if (Input.GetKeyDown(KeyCode.U)) {
             tarir.GetComponent<Animation> ().Play ("Walk");
             tarir.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
 			passos++;
-            Debug.Log("Mana Atual: " + mana);
         } else if (Input.GetKeyDown(KeyCode.Alpha8) && mana >= 10) { //Habilidade 1
             tarir.GetComponent<Animation> ().Play ("Attack");
 			GameObject fba = Instantiate (H1) as GameObject;
@@ -87,33 +89,28 @@ public class Tarir : MonoBehaviour {
 
             //fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
             mana -= 10;
-            Debug.Log("Mana Atual: " + mana);
+			manaSlider.value = mana;
         } else if (Input.GetKeyDown(KeyCode.Alpha9) && mana >= 10) { //Habilidade 2
             tarir.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (H2) as GameObject;
             fb.transform.position = new Vector3(20.0f, 0.05f, 20.0f);
             mana -= 10;
-            Debug.Log("Mana Atual: " + mana);
+			manaSlider.value = mana;
         } else if (Input.GetKeyDown(KeyCode.Alpha0) && mana >= 20) { //Habilidade 3
             tarir.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (H3) as GameObject;
 			fb.transform.position = new Vector3(20.0f, 2.0f, 25.0f);
             mana -= 20;
-            Debug.Log("Mana Atual: " + mana);
+			manaSlider.value = mana;
         }
 	}
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Life")
-        {
-            vida += 20;
-            Destroy(col.gameObject);
-        }
-
         if (col.gameObject.tag == "Mana")
         {
             mana += 20;
+			manaSlider.value = mana;
             Destroy(col.gameObject);
         }
     }

@@ -45,4 +45,12 @@ public class Dano : MonoBehaviour {
 			healthSlider.value = vida;
 		}
 	}
+	void OnTriggerEnter(Collider col)
+	{
+		if (col.gameObject.tag == "Life") {
+			vida += 20;
+			healthSlider.value = vida;
+			Destroy (col.gameObject);
+		}
+	}
 }

@@ -1,6 +1,8 @@
-﻿    using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class Rayssa : MonoBehaviour {
 
@@ -10,6 +12,7 @@ public class Rayssa : MonoBehaviour {
 	int limitePassos;
 	int mana = 500;
 	int vida = 60;
+	public Slider manaSlider;
 
     void Start () {
 		limitePassos = 4;	
@@ -21,22 +24,22 @@ public class Rayssa : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.A)) {
             rayssa.GetComponent<Animation>().Play("idle");
             rayssa.transform.Rotate(new Vector3(0.0f, -90.0f, 0.0f));
-            Debug.Log("Mana Atual: " + mana);
-        } else if (Input.GetKeyDown(KeyCode.D)) {
+        } 
+		else if (Input.GetKeyDown(KeyCode.D)) {
             rayssa.GetComponent<Animation> ().Play ("idle");
             rayssa.transform.Rotate (new Vector3 (0.0f, 90.0f, 0.0f));
-            Debug.Log("Mana Atual: " + mana);
-        } else if (Input.GetKeyDown(KeyCode.W)) {
+        } 
+		else if (Input.GetKeyDown(KeyCode.W)) {
             rayssa.GetComponent<Animation> ().Play ("Walk");
             rayssa.transform.Translate (new Vector3 (0.0f, 0.0f, 2.5f));
 			passos++;
-            Debug.Log("Mana Atual: " + mana);
-        } else if (Input.GetKeyDown(KeyCode.S)) {
+        } 
+		else if (Input.GetKeyDown(KeyCode.S)) {
             rayssa.GetComponent<Animation> ().Play ("Walk");
             rayssa.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
 			passos++;
-            Debug.Log("Mana Atual: " + mana);
-        } else if (Input.GetKeyDown(KeyCode.J) && mana >= 20) { //Habilidade 1
+        } 
+		else if (Input.GetKeyDown(KeyCode.J) && mana >= 20) { //Habilidade 1
             rayssa.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (H1) as GameObject;
 			fb.transform.position = rayssa.transform.position + (rayssa.transform.forward);
@@ -44,13 +47,15 @@ public class Rayssa : MonoBehaviour {
 			fb.transform.rotation = rayssa.transform.rotation;
             //fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
             mana -= 20;
-            Debug.Log("Mana Atual: " + mana);
-        } else if (Input.GetKeyDown(KeyCode.K) && mana >= 5) { //Habilidade 2
+			manaSlider.value = mana;
+        } 
+		else if (Input.GetKeyDown(KeyCode.K) && mana >= 5) { //Habilidade 2
             rayssa.GetComponent<Animation> ().Play ("Attack");
             passos -= 2;
             mana -= 5;
-            Debug.Log("Mana Atual: " + mana);
-        } else if (Input.GetKeyDown(KeyCode.L) && mana >= 35) { //Habilidade 3
+			manaSlider.value = mana;
+        } 
+		else if (Input.GetKeyDown(KeyCode.L) && mana >= 35) { //Habilidade 3
             rayssa.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb1 = Instantiate (H3) as GameObject;
 
@@ -81,7 +86,7 @@ public class Rayssa : MonoBehaviour {
 
 
             mana -= 35;
-            Debug.Log("Mana Atual: " + mana);
+			manaSlider.value = mana;
         }
         
 		//Comando para limitar o plano (Não sair do plano)
@@ -91,15 +96,10 @@ public class Rayssa : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Life")
-        {
-            vida += 20;
-            Destroy(col.gameObject);
-        }
-
         if (col.gameObject.tag == "Mana")
         {
             mana += 20;
+			manaSlider.value = mana;
             Destroy(col.gameObject);
         }
     }
