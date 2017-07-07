@@ -7,7 +7,7 @@ public class Aluria : MonoBehaviour {
 	public GameObject H1;
 	public GameObject H2;
 	public GameObject H3;
-	int passos = 0;
+    int passos = 0;
 	int limitePassos;
 	int mana = 500;
 	int vida = 60;
@@ -40,10 +40,10 @@ public class Aluria : MonoBehaviour {
         } else if (Input.GetKeyDown(KeyCode.J) && mana >= 10) { //Habilidade 1
             aluria.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (H1) as GameObject;
-			fb.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
-			fb.transform.position = (new Vector3(fb.transform.position.x, 1.0f, fb.transform.position.z));
-			fb.transform.rotation = aluria.transform.rotation;
-            //fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
+            fb.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
+            fb.transform.position = (new Vector3(fb.transform.position.x, 1.0f, fb.transform.position.z));
+            fb.transform.rotation = aluria.transform.rotation;
+            fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
             mana -= 10;
             Debug.Log("Mana Atual: " + mana);
         } else if (Input.GetKeyDown(KeyCode.K) && mana >= 15) { //Habilidade 2
@@ -74,7 +74,8 @@ public class Aluria : MonoBehaviour {
             mana -= 35;
             Debug.Log("Mana Atual: " + mana);
         }
-	}
+        //n.transform.position = (new Vector3(n.transform.position.x + 0.5f , 1.0f, n.transform.position.z + 0.5f));
+    }
 
     void OnTriggerEnter(Collider col)
     {
