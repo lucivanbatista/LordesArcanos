@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
 
 public class Dano : MonoBehaviour {
 
 	int vida = 60;
+	public Slider healthSlider;
 
 	// Use this for initialization
 	void Start () {
@@ -22,24 +25,24 @@ public class Dano : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "Class 1"){
 			vida -= 5;
-			Debug.Log(this.gameObject.tag + "Vida Collider: " + vida);
+			healthSlider.value = vida;
             Destroy(col.gameObject);
 		}
 		if(col.gameObject.tag == "Class 2"){
 			vida -= 10;
-			Debug.Log(this.gameObject.tag + "Vida Collider: " + vida);
+			healthSlider.value = vida;
 		}
 		if(col.gameObject.tag == "Class 3"){
 			vida -= 15;
-			Debug.Log(this.gameObject.tag + "Vida Collider: " + vida);
+			healthSlider.value = vida;
 		}
 		if(col.gameObject.tag == "Class 4"){
 			vida -= 20;
-			Debug.Log(this.gameObject.tag + "Vida Collider: " + vida);
+			healthSlider.value = vida;
 		}
 		if(col.gameObject.tag == "Class 5"){
 			vida -= 40;
-			Debug.Log(this.gameObject.tag + "Vida Collider: " + vida);
+			healthSlider.value = vida;
 		}
 	}
 }
