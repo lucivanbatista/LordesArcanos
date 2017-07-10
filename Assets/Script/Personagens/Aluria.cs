@@ -43,7 +43,7 @@ public class Aluria : MonoBehaviour {
             fb.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
             fb.transform.position = (new Vector3(fb.transform.position.x, 1.0f, fb.transform.position.z));
             fb.transform.rotation = aluria.transform.rotation;
-            fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
+            fb.GetComponent<MovimentoHabilidade>().Direcao(aluria.transform.position);
             mana -= 10;
 			manaSlider.value = mana;
         } else if (Input.GetKeyDown(KeyCode.K) && mana >= 15) { //Habilidade 2
@@ -59,17 +59,22 @@ public class Aluria : MonoBehaviour {
 			GameObject fba = Instantiate (H3) as GameObject;
 			GameObject fbb = Instantiate (H3) as GameObject;
 			GameObject fbc = Instantiate (H3) as GameObject;
+
             fba.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
             fba.transform.rotation = aluria.transform.rotation;
-            fba.gameObject.transform.Translate(new Vector3(-1.25f, 0.05f, 0.0f));
+            fba.transform.position = (new Vector3(fba.transform.position.x, 1.0f, fba.transform.position.z + 2.5f));
+            fba.GetComponent<MovimentoHabilidade>().Direcao(aluria.transform.position);
 
             fbb.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
             fbb.transform.rotation = aluria.transform.rotation;
-            fbb.gameObject.transform.Translate(new Vector3(1.25f, 0.05f, 0.0f));
+            fbb.transform.position = (new Vector3(fbb.transform.position.x, 1.0f, fbb.transform.position.z));
+            fbb.GetComponent<MovimentoHabilidade>().Direcao(aluria.transform.position);
 
             fbc.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
             fbc.transform.rotation = aluria.transform.rotation;
-            fbc.gameObject.transform.Translate(new Vector3(0.0f, 0.05f, 0.0f));
+            fbc.transform.position = (new Vector3(fbc.transform.position.x, 1.0f, fbc.transform.position.z - 2.5f));
+            fbc.GetComponent<MovimentoHabilidade>().Direcao(aluria.transform.position);
+
 
             mana -= 35;
 			manaSlider.value = mana;

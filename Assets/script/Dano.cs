@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class Dano : MonoBehaviour {
 
@@ -20,6 +19,11 @@ public class Dano : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 	}
+
+    public void somarvida(float vida)
+    {
+        vida = this.vida + vida;
+    }
 
 	void OnCollisionEnter(Collision col)
 	{

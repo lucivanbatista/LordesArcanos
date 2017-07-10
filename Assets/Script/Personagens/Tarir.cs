@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class Tarir : MonoBehaviour {
 
@@ -94,6 +93,11 @@ public class Tarir : MonoBehaviour {
             tarir.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (H2) as GameObject;
             fb.transform.position = new Vector3(20.0f, 0.05f, 20.0f);
+            /*if (gameObject.tag == "Player")
+            {
+                Debug.Log("Entrou");
+                gameObject.tag += 20;
+            }*/
             mana -= 10;
 			manaSlider.value = mana;
         } else if (Input.GetKeyDown(KeyCode.Alpha0) && mana >= 20) { //Habilidade 3
