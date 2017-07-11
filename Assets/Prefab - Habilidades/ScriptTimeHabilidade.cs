@@ -26,6 +26,11 @@ public class ScriptTimeHabilidade : MonoBehaviour {
         {
             Destroy(this.gameObject);
         }
+        if (col.gameObject.tag == "Class 0")
+        {
+            Destroy(this.gameObject);
+            Destroy(col.gameObject);
+        }
     }
 
     public void getPosicao(Vector3 posicao)

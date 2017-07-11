@@ -20,6 +20,11 @@ public class Objetos : MonoBehaviour {
 		if(col.gameObject.tag == "Class 1" || col.gameObject.tag == "Class 2" || col.gameObject.tag == "Class 3" || col.gameObject.tag == "Class 4" || col.gameObject.tag == "Class 5")
 		{
 			Destroy(col.gameObject);
+            if(this.gameObject.tag == "Class 0")
+            {
+                Destroy(this.gameObject);
+            }
 		}
+        
 	}
 }

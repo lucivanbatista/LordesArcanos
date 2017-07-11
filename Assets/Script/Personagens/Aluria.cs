@@ -24,18 +24,22 @@ public class Aluria : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.A)) {
             aluria.GetComponent<Animation>().Play("idle");
             aluria.transform.Rotate(new Vector3(0.0f, -90.0f, 0.0f));
+            H2.transform.rotation = aluria.transform.rotation;
         } else if (Input.GetKeyDown(KeyCode.D)) {
             aluria.GetComponent<Animation> ().Play ("idle");
             aluria.transform.Rotate (new Vector3 (0.0f, 90.0f, 0.0f));
+            H2.transform.rotation = aluria.transform.rotation;
         } else if (Input.GetKeyDown(KeyCode.W)) {
             aluria.GetComponent<Animation> ().Play ("Walk");
             aluria.transform.Translate (new Vector3 (0.0f, 0.0f, 2.5f));
-			passos++;
+            H2.transform.Translate(new Vector3(0.0f, 0.0f, 2.5f));
+            passos++;
             Debug.Log("Mana Atual: " + mana);
         } else if (Input.GetKeyDown(KeyCode.S)) {
             aluria.GetComponent<Animation> ().Play ("Walk");
             aluria.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
-			passos++;
+            H2.transform.Translate(new Vector3(0.0f, 0.0f, -2.5f));
+            passos++;
         } else if (Input.GetKeyDown(KeyCode.J) && mana >= 10) { //Habilidade 1
             aluria.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (H1) as GameObject;
@@ -47,12 +51,14 @@ public class Aluria : MonoBehaviour {
 			manaSlider.value = mana;
         } else if (Input.GetKeyDown(KeyCode.K) && mana >= 15) { //Habilidade 2
             aluria.GetComponent<Animation> ().Play ("Attack");
-			GameObject fb = Instantiate (H2) as GameObject;
-			fb.transform.position = aluria.transform.position;
-			fb.gameObject.transform.Translate (new Vector3 (0.0f, 0.0f, 0.5f));
-			fb.transform.rotation = aluria.transform.rotation;
+            GameObject fb = Instantiate(H2) as GameObject;
+            this.H2 = fb;
+            fb.transform.position = aluria.transform.position;
+            fb.gameObject.transform.Translate(new Vector3(0.0f, 0.0f, 0.5f));
+            fb.transform.rotation = aluria.transform.rotation;
             mana -= 15;
-			manaSlider.value = mana;
+            manaSlider.value = mana;
+			
         } else if (Input.GetKeyDown(KeyCode.L) && mana >= 35) { //Habilidade 3
             aluria.GetComponent<Animation> ().Play ("Attack");
 			GameObject fba = Instantiate (H3) as GameObject;
@@ -61,23 +67,37 @@ public class Aluria : MonoBehaviour {
 
             fba.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
             fba.transform.rotation = aluria.transform.rotation;
-            fba.transform.position = (new Vector3(fba.transform.position.x, 1.0f, fba.transform.position.z + 2.5f));
-            fba.GetComponent<MovimentoHabilidade>().Direcao(aluria.transform.position);
+            fba.gameObject.transform.Translate(new Vector3(-2.5f, 1.0f, 0.0f));
+            
 
             fbb.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
             fbb.transform.rotation = aluria.transform.rotation;
-            fbb.transform.position = (new Vector3(fbb.transform.position.x, 1.0f, fbb.transform.position.z));
-            fbb.GetComponent<MovimentoHabilidade>().Direcao(aluria.transform.position);
+            fbb.gameObject.transform.Translate(new Vector3(0f, 1.0f, 0.0f));
+            
 
             fbc.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
             fbc.transform.rotation = aluria.transform.rotation;
-            fbc.transform.position = (new Vector3(fbc.transform.position.x, 1.0f, fbc.transform.position.z - 2.5f));
-            fbc.GetComponent<MovimentoHabilidade>().Direcao(aluria.transform.position);
+            fbc.gameObject.transform.Translate(new Vector3(2.5f, 1.0f, 0.0f));
+            
+
+            /*fba.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
+            fba.transform.position = (new Vector3(aluria.transform.position.x , 1.0f, aluria.transform.position.z + 2.5f));
+            fba.transform.rotation = aluria.transform.rotation;
+
+            fbb.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
+            fbb.transform.position = (new Vector3(aluria.transform.position.x, 1.0f, aluria.transform.position.z));
+            fbb.transform.rotation = aluria.transform.rotation;
+
+            fbc.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
+            fbc.transform.position = (new Vector3(aluria.transform.position.x , 1.0f, aluria.transform.position.z - 2.5f));
+            fbc.transform.rotation = aluria.transform.rotation;*/
 
 
             mana -= 35;
 			manaSlider.value = mana;
         }
+        H2.transform.position = aluria.transform.position;
+        H2.transform.Translate(new Vector3(0.0f, 0.5f, 0.0f));
         //n.transform.position = (new Vector3(n.transform.position.x + 0.5f , 1.0f, n.transform.position.z + 0.5f));
     }
 

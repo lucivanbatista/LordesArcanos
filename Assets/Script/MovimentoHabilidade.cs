@@ -18,7 +18,7 @@ public class MovimentoHabilidade : MonoBehaviour {
         if ((Time.fixedTime - tempo) > 2) { // Tempo controla a particula de collider que dá dano
             Destroy(this.gameObject);
         }
-
+        
         //Debug.Log(this.gameObject.transform.position.x + ";" + this.gameObject.transform.position.y + ";" + this.gameObject.transform.position.z);
         this.gameObject.transform.Translate(0.0f, 0.0f, 0.07f);
 
