@@ -15,7 +15,7 @@ public class MovimentoHabilidade : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         
-        if ((Time.fixedTime - tempo) > 5) { // Tempo controla a particula de collider que dá dano
+        if ((Time.fixedTime - tempo) > 2) { // Tempo controla a particula de collider que dá dano
             Destroy(this.gameObject);
         }
 

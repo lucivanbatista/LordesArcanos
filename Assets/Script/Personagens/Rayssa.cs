@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class Rayssa : MonoBehaviour {
 
 	public GameObject H1;
+    public GameObject H2;
 	public GameObject H3;
 	int passos = 0;
 	int limitePassos;
@@ -42,15 +42,20 @@ public class Rayssa : MonoBehaviour {
 		else if (Input.GetKeyDown(KeyCode.J) && mana >= 20) { //Habilidade 1
             rayssa.GetComponent<Animation> ().Play ("Attack");
 			GameObject fb = Instantiate (H1) as GameObject;
-			fb.transform.position = rayssa.transform.position + (rayssa.transform.forward);
-			fb.gameObject.transform.Translate (new Vector3 (0.0f, 0.0f, 0.0f));
+			fb.transform.position = rayssa.transform.position + (rayssa.transform.forward) * 2;
+			fb.gameObject.transform.Translate (new Vector3 (0.0f, 1.0f, 0.0f));
 			fb.transform.rotation = rayssa.transform.rotation;
-            //fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
+            fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
+
+            fb.GetComponent<ScriptTimeHabilidade>().getPosicao(rayssa.transform.position);
             mana -= 20;
 			manaSlider.value = mana;
         } 
 		else if (Input.GetKeyDown(KeyCode.K) && mana >= 5) { //Habilidade 2
             rayssa.GetComponent<Animation> ().Play ("Attack");
+            GameObject fb = Instantiate(H2) as GameObject;
+            fb.transform.position = rayssa.transform.position;
+            
             passos -= 2;
             mana -= 5;
 			manaSlider.value = mana;

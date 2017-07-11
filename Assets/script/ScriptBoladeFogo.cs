@@ -5,26 +5,18 @@ using UnityEngine;
 public class ScriptBoladeFogo : MonoBehaviour {
 
     Vector3 posicaoInicial;
+    float tempo;
 
-	void Start () {
+    void Start () {
         posicaoInicial = this.gameObject.transform.position;
-	}
+        tempo = Time.fixedTime;
+    }
 
 	void Update () {
-        //Debug.Log(this.gameObject.transform.position);
-		/*this.gameObject.transform.Translate(this.gameObject.transform.up * 0.01f);
-
-		if(this.gameObject.transform.position.y > 1.15f){
-			Destroy (this.gameObject);
-		}*/
-	}
-
-	void OnCollisionEnter(Collision col)
-	{
-		if(col.gameObject.tag == "zombie")
-		{
-			Destroy(col.gameObject);
-			Destroy(this.gameObject);
-		}
-	}
+        if ((Time.fixedTime - tempo) > 0.35)
+        { // Tempo controla a particula de collider que dá dano
+            Debug.Log(tempo + ";" + Time.fixedTime);
+            Destroy(this.gameObject);
+        }
+    }
 }

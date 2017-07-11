@@ -83,6 +83,8 @@ namespace DigitalRuby.PyroParticles
 
         protected virtual void Start()
         {
+            
+
             if (AudioSource != null)
             {
                 AudioSource.Play();
