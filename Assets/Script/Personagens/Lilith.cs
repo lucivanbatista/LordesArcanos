@@ -22,21 +22,21 @@ public class Lilith : MonoBehaviour {
 	void Update () {
 		GameObject lilith = this.gameObject;
 		if (ative) {
-			if (Input.GetKeyDown (KeyCode.F)) {
+			if (Input.GetKeyDown (KeyCode.A)) {
 				lilith.GetComponent<Animation> ().Play ("idle");
 				lilith.transform.Rotate (new Vector3 (0.0f, -90.0f, 0.0f));
-			} else if (Input.GetKeyDown (KeyCode.H)) {
+			} else if (Input.GetKeyDown (KeyCode.D)) {
 				lilith.GetComponent<Animation> ().Play ("idle");
 				lilith.transform.Rotate (new Vector3 (0.0f, 90.0f, 0.0f));
-			} else if (Input.GetKeyDown (KeyCode.T)) {
+			} else if (Input.GetKeyDown (KeyCode.W)) {
 				lilith.GetComponent<Animation> ().Play ("Walk");
 				lilith.transform.Translate (new Vector3 (0.0f, 0.0f, 2.5f));
 				passos++;
-			} else if (Input.GetKeyDown (KeyCode.G)) {
+			} else if (Input.GetKeyDown (KeyCode.S)) {
 				lilith.GetComponent<Animation> ().Play ("Walk");
 				lilith.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
 				passos++;
-			} else if (Input.GetKeyDown (KeyCode.I) && mana >= 15) { //Habilidade 1
+			} else if (Input.GetKeyDown (KeyCode.Alpha1) && mana >= 15) { //Habilidade 1
 				lilith.GetComponent<Animation> ().Play ("Attack");
 				GameObject fb = Instantiate (H1) as GameObject;
 				fb.transform.position = lilith.transform.position + (lilith.transform.forward) * 2;
@@ -47,7 +47,7 @@ public class Lilith : MonoBehaviour {
 				//fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
 				mana -= 15;
 				manaSlider.value = mana;
-			} else if (Input.GetKeyDown (KeyCode.O) && mana >= 15) { //Habilidade 2
+			} else if (Input.GetKeyDown (KeyCode.Alpha2) && mana >= 15) { //Habilidade 2
 				lilith.GetComponent<Animation> ().Play ("Attack");
 				lilith.GetComponent<Animation> ().Play ("Attack");
 				GameObject fba = Instantiate (H2) as GameObject;
@@ -83,7 +83,7 @@ public class Lilith : MonoBehaviour {
 
 				mana -= 15;
 				manaSlider.value = mana;
-			} else if (Input.GetKeyDown (KeyCode.P) && mana >= 30) { //Habilidade 3
+			} else if (Input.GetKeyDown (KeyCode.Alpha3) && mana >= 30) { //Habilidade 3
 				lilith.GetComponent<Animation> ().Play ("Attack");
 				GameObject fb = Instantiate (H3) as GameObject;
 				fb.transform.position = lilith.transform.position + (lilith.transform.forward);

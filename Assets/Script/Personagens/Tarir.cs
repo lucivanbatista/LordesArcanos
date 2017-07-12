@@ -22,21 +22,21 @@ public class Tarir : MonoBehaviour {
 	void Update () {
 		GameObject tarir = this.gameObject;
 		if (ative) {
-			if (Input.GetKeyDown (KeyCode.Y)) {
+			if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 				tarir.GetComponent<Animation> ().Play ("idle");
 				tarir.transform.Rotate (new Vector3 (0.0f, -90.0f, 0.0f));
-			} else if (Input.GetKeyDown (KeyCode.I)) {
+			} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
 				tarir.GetComponent<Animation> ().Play ("idle");
 				tarir.transform.Rotate (new Vector3 (0.0f, 90.0f, 0.0f));
-			} else if (Input.GetKeyDown (KeyCode.Alpha7)) {
+			} else if (Input.GetKeyDown (KeyCode.UpArrow)) {
 				tarir.GetComponent<Animation> ().Play ("Walk");
 				tarir.transform.Translate (new Vector3 (0.0f, 0.0f, 2.5f));
 				passos++;
-			} else if (Input.GetKeyDown (KeyCode.U)) {
+			} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
 				tarir.GetComponent<Animation> ().Play ("Walk");
 				tarir.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
 				passos++;
-			} else if (Input.GetKeyDown (KeyCode.Alpha8) && mana >= 10) { //Habilidade 1
+			} else if (Input.GetKeyDown (KeyCode.B) && mana >= 10) { //Habilidade 1
 				tarir.GetComponent<Animation> ().Play ("Attack");
 				GameObject fba = Instantiate (H1) as GameObject;
 				GameObject fbb = Instantiate (H1) as GameObject;
@@ -87,7 +87,7 @@ public class Tarir : MonoBehaviour {
 				//fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
 				mana -= 10;
 				manaSlider.value = mana;
-			} else if (Input.GetKeyDown (KeyCode.Alpha9) && mana >= 10) { //Habilidade 2
+			} else if (Input.GetKeyDown (KeyCode.N) && mana >= 10) { //Habilidade 2
 				tarir.GetComponent<Animation> ().Play ("Attack");
 				GameObject fb = Instantiate (H2) as GameObject;
 				fb.transform.position = new Vector3 (20.0f, 0.05f, 20.0f);
@@ -98,7 +98,7 @@ public class Tarir : MonoBehaviour {
             }*/
 				mana -= 10;
 				manaSlider.value = mana;
-			} else if (Input.GetKeyDown (KeyCode.Alpha0) && mana >= 20) { //Habilidade 3
+			} else if (Input.GetKeyDown (KeyCode.M) && mana >= 20) { //Habilidade 3
 				tarir.GetComponent<Animation> ().Play ("Attack");
 				GameObject fb = Instantiate (H3) as GameObject;
 				fb.transform.position = new Vector3 (20.0f, 2.0f, 25.0f);

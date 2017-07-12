@@ -22,21 +22,21 @@ public class Rayssa : MonoBehaviour {
 	void Update () {
 		GameObject rayssa = this.gameObject;
 		if (ative) {
-			if (Input.GetKeyDown (KeyCode.A)) {
+			if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 				rayssa.GetComponent<Animation> ().Play ("idle");
 				rayssa.transform.Rotate (new Vector3 (0.0f, -90.0f, 0.0f));
-			} else if (Input.GetKeyDown (KeyCode.D)) {
+			} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
 				rayssa.GetComponent<Animation> ().Play ("idle");
 				rayssa.transform.Rotate (new Vector3 (0.0f, 90.0f, 0.0f));
-			} else if (Input.GetKeyDown (KeyCode.W)) {
+			} else if (Input.GetKeyDown (KeyCode.UpArrow)) {
 				rayssa.GetComponent<Animation> ().Play ("Walk");
 				rayssa.transform.Translate (new Vector3 (0.0f, 0.0f, 2.5f));
 				passos++;
-			} else if (Input.GetKeyDown (KeyCode.S)) {
+			} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
 				rayssa.GetComponent<Animation> ().Play ("Walk");
 				rayssa.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
 				passos++;
-			} else if (Input.GetKeyDown (KeyCode.J) && mana >= 20) { //Habilidade 1
+			} else if (Input.GetKeyDown (KeyCode.B) && mana >= 20) { //Habilidade 1
 				rayssa.GetComponent<Animation> ().Play ("Attack");
 				GameObject fb = Instantiate (H1) as GameObject;
 				fb.transform.position = rayssa.transform.position + (rayssa.transform.forward) * 2;
@@ -47,7 +47,7 @@ public class Rayssa : MonoBehaviour {
 				fb.GetComponent<ScriptTimeHabilidade> ().getPosicao (rayssa.transform.position);
 				mana -= 20;
 				manaSlider.value = mana;
-			} else if (Input.GetKeyDown (KeyCode.K) && mana >= 5) { //Habilidade 2
+			} else if (Input.GetKeyDown (KeyCode.N) && mana >= 5) { //Habilidade 2
 				rayssa.GetComponent<Animation> ().Play ("Attack");
 				GameObject fb = Instantiate (H2) as GameObject;
 				fb.transform.position = rayssa.transform.position;
@@ -55,7 +55,7 @@ public class Rayssa : MonoBehaviour {
 				passos -= 2;
 				mana -= 5;
 				manaSlider.value = mana;
-			} else if (Input.GetKeyDown (KeyCode.L) && mana >= 35) { //Habilidade 3
+			} else if (Input.GetKeyDown (KeyCode.M) && mana >= 35) { //Habilidade 3
 				rayssa.GetComponent<Animation> ().Play ("Attack");
 				GameObject fb1 = Instantiate (H3) as GameObject;
 

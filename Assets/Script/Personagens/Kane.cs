@@ -36,7 +36,7 @@ public class Kane : MonoBehaviour {
 				kane.GetComponent<Animation> ().Play ("Walk");
 				kane.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
 				passos++;
-			} else if (Input.GetKeyDown (KeyCode.Alpha1) && mana >= 15) { //Habilidade 1
+			} else if (Input.GetKeyDown (KeyCode.B) && mana >= 15) { //Habilidade 1
 				kane.GetComponent<Animation> ().Play ("Attack");
 				GameObject fb = Instantiate (H1) as GameObject;
 				fb.transform.position = kane.transform.position + (kane.transform.forward) * 2;
@@ -45,16 +45,17 @@ public class Kane : MonoBehaviour {
 				//fb.GetComponent<Rigidbody>().AddForce(fb.transform.forward * 500.0f);
 				mana -= 15;
 				manaSlider.value = mana;
-			} else if (Input.GetKeyDown (KeyCode.Alpha2) && mana >= 15) { //Habilidade 2
+			} else if (Input.GetKeyDown (KeyCode.N) && mana >= 15) { //Habilidade 2
 				kane.GetComponent<Animation> ().Play ("Attack");
 				GameObject fb = Instantiate (H2) as GameObject;
-				fb.transform.position = kane.transform.position + (kane.transform.forward);
-				fb.gameObject.transform.Translate (new Vector3 (-1.25f, 0.05f, 2.0f));
-				fb.transform.rotation = kane.transform.rotation;
-				mana -= 15;
+				fb.transform.position = kane.transform.position + (kane.transform.forward) * 2;
+                fb.transform.rotation = kane.transform.rotation;
+                fb.gameObject.transform.Translate (new Vector3 (0.0f, 0.05f, 0.0f));
+                
+                mana -= 15;
 				manaSlider.value = mana;
 
-			} else if (Input.GetKeyDown (KeyCode.Alpha3) && mana >= 35) { //Habilidade 3
+			} else if (Input.GetKeyDown (KeyCode.M) && mana >= 35) { //Habilidade 3
 				kane.GetComponent<Animation> ().Play ("Attack");
 				GameObject fb = Instantiate (H3) as GameObject;
 				fb.transform.position = kane.transform.position + (kane.transform.forward);

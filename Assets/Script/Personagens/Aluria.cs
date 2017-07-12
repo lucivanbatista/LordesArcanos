@@ -41,7 +41,7 @@ public class Aluria : MonoBehaviour {
 				aluria.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
 				H2.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
 				passos++;
-			} else if (Input.GetKeyDown (KeyCode.J) && mana >= 10) { //Habilidade 1
+			} else if (Input.GetKeyDown (KeyCode.Alpha1) && mana >= 10) { //Habilidade 1
 				aluria.GetComponent<Animation> ().Play ("Attack");
 				GameObject fb = Instantiate (H1) as GameObject;
 				fb.transform.position = aluria.transform.position + (aluria.transform.forward) * 2;
@@ -50,7 +50,7 @@ public class Aluria : MonoBehaviour {
 				fb.GetComponent<MovimentoHabilidade> ().Direcao (aluria.transform.position);
 				mana -= 10;
 				manaSlider.value = mana;
-			} else if (Input.GetKeyDown (KeyCode.K) && mana >= 15) { //Habilidade 2
+			} else if (Input.GetKeyDown (KeyCode.Alpha2) && mana >= 15) { //Habilidade 2
 				aluria.GetComponent<Animation> ().Play ("Attack");
 				GameObject fb = Instantiate (H2) as GameObject;
 				this.H2 = fb;
@@ -60,7 +60,7 @@ public class Aluria : MonoBehaviour {
 				mana -= 15;
 				manaSlider.value = mana;
 			
-			} else if (Input.GetKeyDown (KeyCode.L) && mana >= 35) { //Habilidade 3
+			} else if (Input.GetKeyDown (KeyCode.Alpha3) && mana >= 35) { //Habilidade 3
 				aluria.GetComponent<Animation> ().Play ("Attack");
 				GameObject fba = Instantiate (H3) as GameObject;
 				GameObject fbb = Instantiate (H3) as GameObject;
