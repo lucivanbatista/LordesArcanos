@@ -16,7 +16,7 @@ public class Dano : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(vida <= 0){
-			Destroy (this.gameObject);
+			this.gameObject.SetActive (false);
 		}
 	}
 
@@ -55,6 +55,15 @@ public class Dano : MonoBehaviour {
 			vida += 20;
 			healthSlider.value = vida;
 			Destroy (col.gameObject);
+		}
+	}
+
+	public bool isDead(){
+		if(vida <= 0){
+			return true;
+		}
+		else{
+			return false;
 		}
 	}
 }
