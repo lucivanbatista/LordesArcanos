@@ -30,13 +30,12 @@ public class Aluria : MonoBehaviour {
 				aluria.GetComponent<Animation> ().Play ("idle");
 				aluria.transform.Rotate (new Vector3 (0.0f, 90.0f, 0.0f));
 				H2.transform.rotation = aluria.transform.rotation;
-			} else if (Input.GetKeyDown (KeyCode.W)) {
+			} else if (Input.GetKeyDown (KeyCode.W) && passos < limitePassos) {
 				aluria.GetComponent<Animation> ().Play ("Walk");
 				aluria.transform.Translate (new Vector3 (0.0f, 0.0f, 2.5f));
 				H2.transform.Translate (new Vector3 (0.0f, 0.0f, 2.5f));
 				passos++;
-				Debug.Log ("Mana Atual: " + mana);
-			} else if (Input.GetKeyDown (KeyCode.S)) {
+			} else if (Input.GetKeyDown (KeyCode.S) && passos < limitePassos) {
 				aluria.GetComponent<Animation> ().Play ("Walk");
 				aluria.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
 				H2.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
@@ -115,4 +114,9 @@ public class Aluria : MonoBehaviour {
 	public void setAtive(bool a){
 		ative = a;
 	}
+
+    public void resetPassos()
+    {
+        passos = 0;
+    }
 }

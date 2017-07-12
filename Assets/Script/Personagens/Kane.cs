@@ -28,11 +28,11 @@ public class Kane : MonoBehaviour {
 			} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
 				kane.GetComponent<Animation> ().Play ("idle");
 				kane.transform.Rotate (new Vector3 (0.0f, 90.0f, 0.0f));
-			} else if (Input.GetKeyDown (KeyCode.UpArrow)) {
+			} else if (Input.GetKeyDown (KeyCode.UpArrow) && passos < limitePassos) {
 				kane.GetComponent<Animation> ().Play ("Walk");
 				kane.transform.Translate (new Vector3 (0.0f, 0.0f, 2.5f));
 				passos++;
-			} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+			} else if (Input.GetKeyDown (KeyCode.DownArrow) && passos < limitePassos) {
 				kane.GetComponent<Animation> ().Play ("Walk");
 				kane.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
 				passos++;
@@ -78,7 +78,13 @@ public class Kane : MonoBehaviour {
             Destroy(col.gameObject);
         }
     }
+
 	public void setAtive(bool a){
 		ative = a;
 	}
+
+    public void resetPassos()
+    {
+        passos = 0;
+    }
 }

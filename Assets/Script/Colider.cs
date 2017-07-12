@@ -17,11 +17,11 @@ public class Colider : MonoBehaviour {
         //Comando para limitar o plano (Não sair do plano)
         Vector3 pos = this.gameObject.transform.position;
         this.gameObject.transform.position = new Vector3(Mathf.Clamp(pos.x, 1.25f, 48.75f), pos.y, Mathf.Clamp(pos.z, 1.25f, 48.75f));
-
     }
 
     void OnCollisionEnter(Collision col)
     {
         this.gameObject.transform.position = pos_atual;
     }
+
 }

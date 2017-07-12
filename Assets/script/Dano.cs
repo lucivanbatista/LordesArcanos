@@ -49,6 +49,7 @@ public class Dano : MonoBehaviour {
 			healthSlider.value = vida;
 		}
 	}
+
 	void OnTriggerEnter(Collider col)
 	{
 		if (col.gameObject.tag == "Life") {
@@ -66,4 +67,9 @@ public class Dano : MonoBehaviour {
 			return false;
 		}
 	}
+
+    public void aumentarVida(int vida)
+    {
+        this.vida += vida;
+    }
 }

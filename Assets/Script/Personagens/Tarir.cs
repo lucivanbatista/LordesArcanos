@@ -14,6 +14,8 @@ public class Tarir : MonoBehaviour {
 	int vida = 60;
 	public Slider manaSlider;
 	bool ative;
+
+
 	void Start () {
 		limitePassos = 4;
 		ative = false;
@@ -28,11 +30,11 @@ public class Tarir : MonoBehaviour {
 			} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
 				tarir.GetComponent<Animation> ().Play ("idle");
 				tarir.transform.Rotate (new Vector3 (0.0f, 90.0f, 0.0f));
-			} else if (Input.GetKeyDown (KeyCode.UpArrow)) {
+			} else if (Input.GetKeyDown (KeyCode.UpArrow) && passos < limitePassos) {
 				tarir.GetComponent<Animation> ().Play ("Walk");
 				tarir.transform.Translate (new Vector3 (0.0f, 0.0f, 2.5f));
 				passos++;
-			} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+			} else if (Input.GetKeyDown (KeyCode.DownArrow) && passos < limitePassos) {
 				tarir.GetComponent<Animation> ().Play ("Walk");
 				tarir.transform.Translate (new Vector3 (0.0f, 0.0f, -2.5f));
 				passos++;
@@ -90,13 +92,11 @@ public class Tarir : MonoBehaviour {
 			} else if (Input.GetKeyDown (KeyCode.N) && mana >= 10) { //Habilidade 2
 				tarir.GetComponent<Animation> ().Play ("Attack");
 				GameObject fb = Instantiate (H2) as GameObject;
-				fb.transform.position = new Vector3 (20.0f, 0.05f, 20.0f);
-				/*if (gameObject.tag == "Player")
-            {
-                Debug.Log("Entrou");
-                gameObject.tag += 20;
-            }*/
-				mana -= 10;
+				fb.transform.position = new Vector3 (20.0f, 2.5f, 20.0f);
+                int vidaplus = 5;
+
+                fb.GetComponent<Dano>().aumentarVida(vidaplus);
+                mana -= 10;
 				manaSlider.value = mana;
 			} else if (Input.GetKeyDown (KeyCode.M) && mana >= 20) { //Habilidade 3
 				tarir.GetComponent<Animation> ().Play ("Attack");
@@ -121,4 +121,9 @@ public class Tarir : MonoBehaviour {
 	public void setAtive(bool a){
 		ative = a;
 	}
+
+    public void resetPassos()
+    {
+        passos = 0;
+    }
 }
