@@ -25,11 +25,26 @@ public class Turno : MonoBehaviour
 	void Update ()
 	{
 		if  (Input.GetKeyDown (KeyCode.Home)){
+			// Kane
 		re: if  (turn == 0){
 				if (kane.GetComponent<Dano> ().isDead ()) {
 					turn = 2;
 					goto re;
-				} else {
+				}
+				else if(tarir.GetComponent<Dano>().isDead()){
+					label.text = "Player 1: Rayssa";
+					label.color = new Color (255f,0f,0f);
+					aluria.GetComponent<Aluria> ().setAtive (false);
+					kane.GetComponent<Kane> ().setAtive (true);
+					lilith.GetComponent<Lilith> ().setAtive (false);
+					rayssa.GetComponent<Rayssa> ().setAtive (false);
+					tarir.GetComponent<Tarir> ().setAtive (false);
+					ellis.GetComponent<Kane> ().setAtive (false);
+					turn = 5;
+					camera1.enabled = true;
+					camera2.enabled = false;
+				}
+				else {
 					label.text = "Player 1: Kane";
 					label.color = new Color (255f,0f,0f);
 					aluria.GetComponent<Aluria> ().setAtive (false);
@@ -43,12 +58,13 @@ public class Turno : MonoBehaviour
 					camera2.enabled = false;
 				}
 			}
+			//Aluria
 			else if (turn == 1) {
 				if (aluria.GetComponent<Dano> ().isDead ()) {
 					turn = 3;
 					goto re;
 				} 
-				else if (kane.GetComponent<Dano> ().isDead ()) {
+				else if (ellis.GetComponent<Dano> ().isDead ()) {
 					label.text = "Player 2: Aluria";
 					label.color = new Color (0f,0f,255f);
 					aluria.GetComponent<Aluria> ().setAtive (true);
@@ -57,7 +73,7 @@ public class Turno : MonoBehaviour
 					rayssa.GetComponent<Rayssa> ().setAtive (false);
 					tarir.GetComponent<Tarir> ().setAtive (false);
 					ellis.GetComponent<Kane> ().setAtive (false);
-					turn = 4;
+					turn = 0;
 					camera1.enabled = false;
 					camera2.enabled = true;
 				}
@@ -75,17 +91,19 @@ public class Turno : MonoBehaviour
 					camera2.enabled = true;
 				}
 			}
+			//Rayssa
 			else if (turn == 2) {
-				if (lilith.GetComponent<Dano> ().isDead ()) {
+				if (rayssa.GetComponent<Dano> ().isDead ()) {
 					turn = 4;
 					goto re;
-				}else if(kane.GetComponent<Dano>().isDead()){
-					label.text = "Player 1: Lilith";
+				}
+				else if(kane.GetComponent<Dano>().isDead()){
+					label.text = "Player 1: Rayssa";
 					label.color = new Color (255f,0f,0f);
 					aluria.GetComponent<Aluria> ().setAtive (false);
 					kane.GetComponent<Kane> ().setAtive (false);
-					lilith.GetComponent<Lilith> ().setAtive (true);
-					rayssa.GetComponent<Rayssa> ().setAtive (false);
+					lilith.GetComponent<Lilith> ().setAtive (false);
+					rayssa.GetComponent<Rayssa> ().setAtive (true);
 					tarir.GetComponent<Tarir> ().setAtive (false);
 					ellis.GetComponent<Kane> ().setAtive (false);
 					turn = 1;
@@ -93,12 +111,12 @@ public class Turno : MonoBehaviour
 					camera2.enabled = false;
 				}
 				else{
-					label.text = "Player 1: Lilith";
+					label.text = "Player 1: Rayssa";
 					label.color = new Color (255f,0f,0f);
 					aluria.GetComponent<Aluria> ().setAtive (false);
 					kane.GetComponent<Kane> ().setAtive (false);
-					lilith.GetComponent<Lilith> ().setAtive (true);
-					rayssa.GetComponent<Rayssa> ().setAtive (false);
+					lilith.GetComponent<Lilith> ().setAtive (false);
+					rayssa.GetComponent<Rayssa> ().setAtive (true);
 					tarir.GetComponent<Tarir> ().setAtive (false);
 					ellis.GetComponent<Kane> ().setAtive (false);
 					turn = 3;
@@ -106,13 +124,14 @@ public class Turno : MonoBehaviour
 					camera2.enabled = false;
 				}
 			}
+			//Lilith
 			else if (turn == 3) {
-				if (rayssa.GetComponent<Dano> ().isDead ()) {
+				if (lilith.GetComponent<Dano> ().isDead ()) {
 					turn = 5;
 					goto re;
 				} 
-				else if(lilith.GetComponent<Dano>().isDead()){
-					label.text = "Player 2: Rayssa";
+				else if(aluria.GetComponent<Dano>().isDead()){
+					label.text = "Player 2: Lilith";
 					label.color = new Color (0f,0f,255f);
 					aluria.GetComponent<Aluria> ().setAtive (false);
 					kane.GetComponent<Kane> ().setAtive (false);
@@ -120,17 +139,17 @@ public class Turno : MonoBehaviour
 					rayssa.GetComponent<Rayssa> ().setAtive (false);
 					tarir.GetComponent<Tarir> ().setAtive (false);
 					ellis.GetComponent<Kane> ().setAtive (false);
-					turn = 5;
+					turn = 2;
 					camera1.enabled = false;
 					camera2.enabled = true;
 				}
 				else {
-					label.text = "Player 2: Rayssa";
+					label.text = "Player 2: Lilith";
 					label.color = new Color (0f,0f,255f);
 					aluria.GetComponent<Aluria> ().setAtive (false);
 					kane.GetComponent<Kane> ().setAtive (false);
-					lilith.GetComponent<Lilith> ().setAtive (false);
-					rayssa.GetComponent<Rayssa> ().setAtive (true);
+					lilith.GetComponent<Lilith> ().setAtive (true);
+					rayssa.GetComponent<Rayssa> ().setAtive (false);
 					tarir.GetComponent<Tarir> ().setAtive (false);
 					ellis.GetComponent<Kane> ().setAtive (false);
 					turn = 4;
@@ -138,12 +157,13 @@ public class Turno : MonoBehaviour
 					camera2.enabled = true;
 				}
 			}
+			//Tarir
 			else if (turn == 4) {
 				if (tarir.GetComponent<Dano> ().isDead ()) {
 					turn = 0;
 					goto re;
 				}
-				else if(lilith.GetComponent<Dano>().isDead()){
+				else if(rayssa.GetComponent<Dano>().isDead()){
 					label.text = "Player 1: Tarir";
 					label.color = new Color (255f,0f,0f);
 					aluria.GetComponent<Aluria> ().setAtive (false);
@@ -170,11 +190,24 @@ public class Turno : MonoBehaviour
 					camera2.enabled = false;
 				}
 			}
+			//Ellis
 			else if (turn == 5) {
 				if (ellis.GetComponent<Dano> ().isDead ()) {
 					turn = 1;
 					goto re;
-				} 
+				} else if(lilith.GetComponent<Dano>().isDead()) {
+					label.text = "Player 2: Ellis";
+					label.color = new Color (0f,0f,255f);
+					aluria.GetComponent<Aluria> ().setAtive (false);
+					kane.GetComponent<Kane> ().setAtive (false);
+					lilith.GetComponent<Lilith> ().setAtive (false);
+					rayssa.GetComponent<Rayssa> ().setAtive (false);
+					tarir.GetComponent<Tarir> ().setAtive (false);
+					ellis.GetComponent<Kane> ().setAtive (true);
+					turn = 4;
+					camera1.enabled = false;
+					camera2.enabled = true;
+				}
 				else {
 					label.text = "Player 2: Ellis";
 					label.color = new Color (0f,0f,255f);
